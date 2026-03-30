@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>veguma chicken curry</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #faf6ef;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+    color: #2c1f4a;
+    min-height: 100vh;
+  }
+
+  header {
+    background: #c9a84c;
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+
+  .brand {
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #2c1f4a;
+    opacity: 0.6;
+    margin-bottom: 10px;
+  }
+
+  header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #2c1f4a;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  header p {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #2c1f4a;
+    opacity: 0.7;
+    letter-spacing: 0.05em;
+  }
+
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+  }
+
+  .section {
+    margin-top: 36px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #c9a84c;
+    margin-bottom: 14px;
+    font-weight: 600;
+  }
+
+  /* 買い物リスト */
+  .shopping-list {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(44,31,74,0.06);
+  }
+
+  .shopping-item {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0ece4;
+    gap: 14px;
+  }
+
+  .shopping-item:last-child { border-bottom: none; }
+
+  .shopping-item .icon {
+    width: 36px;
+    height: 36px;
+    background: #c9a84c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .shopping-item .item-info { flex: 1; }
+  .shopping-item .item-name { font-size: 15px; font-weight: 600; }
+  .shopping-item .item-amount { font-size: 12px; color: #2c1f4a; opacity: 0.5; margin-top: 2px; }
+
+  .veguma-highlight {
+    background: #2c1f4a;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .veguma-highlight .icon {
+    width: 44px;
+    height: 44px;
+    background: #c9a84c;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  .veguma-highlight .item-name {
+    font-size: 17px;
+    font-weight: 700;
+    color: #c9a84c;
+  }
+
+  .veguma-highlight .item-amount {
+    font-size: 12px;
+    color: #fff;
+    opacity: 0.6;
+    margin-top: 3px;
+  }
+
+  /* 手順 */
+  .steps { display: flex; flex-direction: column; gap: 12px; }
+
+  .step {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 2px 8px rgba(44,31,74,0.05);
+  }
+
+  .step-num {
+    width: 28px;
+    height: 28px;
+    background: #c9a84c;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #2c1f4a;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .step-text {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #2c1f4a;
+  }
+
+  .step-time {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 11px;
+    background: #f0ece4;
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #2c1f4a;
+    opacity: 0.6;
+  }
+
+  /* 完成 */
+  .finish {
+    background: #2c1f4a;
+    border-radius: 16px;
+    padding: 28px 24px;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  .finish .emoji { font-size: 36px; margin-bottom: 10px; }
+
+  .finish p {
+    color: #c9a84c;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .finish small {
+    display: block;
+    color: #fff;
+    opacity: 0.45;
+    font-size: 11px;
+    margin-top: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  /* 総時間 */
+  .time-bar {
+    background: #fff;
+    border-radius: 14px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 8px rgba(44,31,74,0.05);
+    margin-top: 36px;
+  }
+
+  .time-bar span { font-size: 13px; opacity: 0.5; }
+  .time-bar strong { font-size: 22px; color: #c9a84c; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">dalajoule</div>
+  <h1>veguma<br>chicken curry</h1>
+  <p>2人前 · 仕込み5分 · 煮込み10分</p>
+</header>
+
+<div class="container">
+
+  <!-- 買い物リスト -->
+  <div class="section">
+    <div class="section-label">Shopping List</div>
+
+    <div class="veguma-highlight">
+      <div class="icon">🫙</div>
+      <div>
+        <div class="item-name">veguma</div>
+        <div class="item-amount">100g（2人前）</div>
+      </div>
+    </div>
+
+    <div class="shopping-list">
+      <div class="shopping-item">
+        <div class="icon">🍗</div>
+        <div class="item-info">
+          <div class="item-name">鶏もも肉</div>
+          <div class="item-amount">1枚（約250g）</div>
+        </div>
+      </div>
+      <div class="shopping-item">
+        <div class="icon">🥫</div>
+        <div class="item-info">
+          <div class="item-name">トマト缶</div>
+          <div class="item-amount">100g</div>
+        </div>
+      </div>
+      <div class="shopping-item">
+        <div class="icon">🧄</div>
+        <div class="item-info">
+          <div class="item-name">生姜にんにくペースト</div>
+          <div class="item-amount">小さじ1</div>
+        </div>
+      </div>
+      <div class="shopping-item">
+        <div class="icon">🫙</div>
+        <div class="item-info">
+          <div class="item-name">スタータースパイス・パウダースパイス</div>
+          <div class="item-amount">vegumaに同封</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 手順 -->
+  <div class="section">
+    <div class="section-label">How to Cook</div>
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          鍋に油を熱し、<strong>スタータースパイス</strong>を入れて中火で炒める。香りが立ったらトマト缶100gを加える。
+          <div class="step-time">2〜3分</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          水分が飛んでペースト状になったら、<strong>一口大に切った鶏もも</strong>と<strong>veguma 100g</strong>、<strong>パウダースパイス</strong>、<strong>塩 小さじ1.5</strong>を加えて炒める。
+          <div class="step-time">2〜3分</div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>水300ml</strong>を加えて強火にかける。沸騰したら弱火にして煮込む。
+          <div class="step-time">10分</div>
+        </div>
+      </div>
+
+      <div class="finish">
+        <div class="emoji">🍛</div>
+        <p>完成</p>
+        <small>total · 約15分</small>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
