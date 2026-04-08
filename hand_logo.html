@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>dalajoule — hand</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0e0d12;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<svg width="300" height="380" viewBox="0 0 300 380" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Gold background -->
+  <rect width="300" height="380" fill="#c9a84c"/>
+
+  <!-- Border -->
+  <rect x="12" y="12" width="276" height="356" fill="none" stroke="#2c1f4a" stroke-width="1.5" opacity="0.45"/>
+  <rect x="18" y="18" width="264" height="344" fill="none" stroke="#2c1f4a" stroke-width="0.5" opacity="0.2"/>
+
+  <g transform="translate(152, 195)">
+
+    <!-- Palm -->
+    <ellipse cx="0" cy="42" rx="52" ry="44" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5"/>
+
+    <!-- Index finger -->
+    <rect x="-30" y="-62" width="18" height="106" rx="9" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5"/>
+
+    <!-- Middle finger (tallest) -->
+    <rect x="-8" y="-74" width="18" height="118" rx="9" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5"/>
+
+    <!-- Ring finger -->
+    <rect x="14" y="-66" width="18" height="110" rx="9" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5"/>
+
+    <!-- Pinky (shorter) -->
+    <rect x="36" y="-52" width="16" height="94" rx="8" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5"/>
+
+    <!-- Thumb (left side, angled out) -->
+    <rect x="-75" y="30" width="16" height="52" rx="8" fill="#c9a84c" stroke="#2c1f4a" stroke-width="1.5" transform="rotate(-50, -60, 56)"/>
+
+    <!-- Palm circle -->
+    <circle cx="0" cy="38" r="25" fill="none" stroke="#2c1f4a" stroke-width="0.8" opacity="0.4"/>
+
+    <!-- Logo in palm -->
+    <image href="images/logo.jpeg" x="-22" y="22" width="44" height="26" preserveAspectRatio="xMidYMid meet"/>
+
+  </g>
+
+  <!-- dalajoule -->
+  <text x="150" y="334"
+        text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="26"
+        font-style="italic"
+        fill="#2c1f4a"
+        letter-spacing="2">dalajoule</text>
+
+</svg>
+
+</body>
+</html>
