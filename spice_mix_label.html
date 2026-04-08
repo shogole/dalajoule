@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>fast chicken — spice mix label</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0e0d12;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    padding: 80px;
+    flex-wrap: wrap;
+  }
+
+  .label-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .caption {
+    color: #c9a84c;
+    font-family: 'Courier New', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    opacity: 0.4;
+    text-transform: uppercase;
+  }
+
+  /* ── Label SVG wrapper ── */
+  svg {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Front Label ── -->
+<div class="label-wrap">
+  <div class="caption">front · 小袋ラベル · 80×120mm</div>
+
+  <svg width="240" height="360" viewBox="0 0 240 360" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="wb" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+
+      <!-- grain texture -->
+      <filter id="grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+        <feColorMatrix type="saturate" values="0"/>
+        <feBlend in="SourceGraphic" mode="multiply" result="blend"/>
+        <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+      </filter>
+    </defs>
+
+    <!-- background -->
+    <rect width="240" height="360" fill="#2c1f4a"/>
+
+    <!-- grain overlay -->
+    <rect width="240" height="360" fill="#2c1f4a" filter="url(#grain)" opacity="0.15"/>
+
+    <!-- outer border -->
+    <rect x="10" y="10" width="220" height="340" fill="none" stroke="#c9a84c" stroke-width="1.2" opacity="0.5"/>
+
+    <!-- inner border -->
+    <rect x="16" y="16" width="208" height="328" fill="none" stroke="#c9a84c" stroke-width="0.4" opacity="0.3"/>
+
+    <!-- top decorative line -->
+    <line x1="30" y1="46" x2="210" y2="46" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- logo area -->
+    <text x="120" y="38" text-anchor="middle"
+          font-family="'Courier New', monospace"
+          font-size="8"
+          fill="#c9a84c"
+          letter-spacing="5"
+          opacity="0.7">DALAJOULE</text>
+
+    <!-- gold spice mark — abstract burst -->
+    <g transform="translate(120, 130)" filter="url(#wb)">
+      <!-- outer ring -->
+      <circle cx="0" cy="0" r="52" fill="none" stroke="#c9a84c" stroke-width="0.8" opacity="0.35"/>
+      <!-- mid ring -->
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.25"/>
+      <!-- radiating lines -->
+      <line x1="0" y1="-52" x2="0" y2="-62" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="52" y1="0" x2="62" y2="0" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="0" y1="52" x2="0" y2="62" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="-52" y1="0" x2="-62" y2="0" stroke="#c9a84c" stroke-width="0.8" opacity="0.5"/>
+      <line x1="37" y1="-37" x2="44" y2="-44" stroke="#c9a84c" stroke-width="0.6" opacity="0.4"/>
+      <line x1="37" y1="37" x2="44" y2="44" stroke="#c9a84c" stroke-width="0.6" opacity="0.4"/>
+      <line x1="-37" y1="37" x2="-44" y2="44" stroke="#c9a84c" stroke-width="0.6" opacity="0.4"/>
+      <line x1="-37" y1="-37" x2="-44" y2="-44" stroke="#c9a84c" stroke-width="0.6" opacity="0.4"/>
+      <!-- center fill -->
+      <circle cx="0" cy="0" r="18" fill="#c9a84c" opacity="0.12"/>
+      <circle cx="0" cy="0" r="8" fill="#c9a84c" opacity="0.25"/>
+    </g>
+
+    <!-- main title -->
+    <text x="120" y="222" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="34"
+          font-style="italic"
+          fill="#c9a84c"
+          letter-spacing="1">fast</text>
+
+    <text x="120" y="256" text-anchor="middle"
+          font-family="Georgia, 'Times New Roman', serif"
+          font-size="20"
+          font-style="italic"
+          fill="#c9a84c"
+          letter-spacing="3"
+          opacity="0.85">chicken</text>
+
+    <!-- divider -->
+    <line x1="60" y1="272" x2="180" y2="272" stroke="#c9a84c" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- sub text -->
+    <text x="120" y="290" text-anchor="middle"
+          font-family="'Courier New', monospace"
+          font-size="8"
+          fill="#c9a84c"
+          letter-spacing="4"
+          opacity="0.55">SPICE MIX</text>
+
+    <!-- weight -->
+    <text x="120" y="318" text-anchor="middle"
+          font-family="'Courier New', monospace"
+          font-size="8"
+          fill="#c9a84c"
+          letter-spacing="3"
+          opacity="0.4">25 g</text>
+
+    <!-- bottom dots -->
+    <text x="120" y="342" text-anchor="middle"
+          font-family="'Courier New', monospace"
+          font-size="7"
+          fill="#c9a84c"
+          letter-spacing="6"
+          opacity="0.3">· · · · ·</text>
+
+  </svg>
+</div>
+
+</body>
+</html>
